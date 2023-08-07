@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+
+export default function Calculator() {
+  const [result, setResult] = useState("");
+
+  const clickHandler = (event) => {
+    setResult(result + event.target.value);
+  };
+
+  const clearDisplay = () => {
+    setResult("");
+  };
+
+  const calculate = () => {
+    setResult(eval(result));
+  };
+
+  const clearLastCharacter = () => {
+    setResult(result.slice(0, -1));
+  };
+  return (
+    <div className="main">
+      <div className="display">
+        <h2 id="result">{result}</h2>
+      </div>
+      <div className="buttons">
+        <button id="clear" onClick={clearDisplay}>
+          AC
+        </button>
+        <button id="delete_single_num" onClick={clearLastCharacter}>C</button>
+        <button id="Normal_btn" onClick={clickHandler} value="/">
+          /
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="*">
+          *
+        </button>
+      </div>
+      <div className="buttons">
+        <button id="Normal_btn" onClick={clickHandler} value="7">
+          7
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="8">
+          8
+        </button>
+        <button id="Normal_btn" onClick={clickHandler} value="9">
+          9
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="-">
+          -
+        </button>
+      </div>
+      <div className="buttons">
+        <button id="Normal_btn" onClick={clickHandler} value="4">
+          4
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="5">
+          5
+        </button>
+        <button id="Normal_btn" onClick={clickHandler} value="6">
+          6
+        </button>{" "}
+        <button id="Normal_button" onClick={clickHandler} value="+">
+          +
+        </button>
+      </div>
+      <div className="buttons">
+        <button id="Normal_btn" onClick={clickHandler} value="1">
+          1
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="2">
+          2
+        </button>
+        <button id="Normal_btn" onClick={clickHandler} value="3">
+          3
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="%">
+          %
+        </button>
+      </div>
+      <div className="buttons">
+        <button id="equalTo" onClick={calculate}>
+          =
+        </button>{" "}
+        <button id="Normal_btn" onClick={clickHandler} value="0">
+          0
+        </button>
+        <button id="Normal_btn" onClick={clickHandler} value=".">
+          .
+        </button>
+      </div>
+    </div>
+  );
+}

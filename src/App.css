@@ -1,38 +1,222 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #101724;
+}
+.main {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 310px;
+  padding: 15px 10px;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.18);
+  background: #1c232f;
+  border-radius: 10px;
+}
+.display {
+  position: relative;
+  width: 90%;
+  height: 80px;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.display #result {
+  font-size: 2em;
+  color: #ddd;
+}
+.buttons {
+  margin-top: 20px;
+  /* width: 100%; */
+}
+button {
+  color: #ddd;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 1.3em;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+}
+button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+#equalTo {
+  width: 125px;
+  background: #58d68d;
+}
+#clear {
+  background: #ff8a65;
+  color: #101724;
+}
+
+#delete_single_num {
+  background-color: #ff4949;
+  color: #101724;
+}
+
+.bg-none{
+  background-color: #1C232F;
+  border: none;
+  /* font-size: 25px; */
+}
+
+/* header button   */
+.switch-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center;
+  margin: auto;
+  height: 30px;
+  margin-left: 58px;
+
 }
 
-.App-link {
-  color: #61dafb;
+.switch-button .switch-outer {
+  height: 100%;
+  background: #252532;
+  width: 85px;
+  border-radius: 165px;
+  -webkit-box-shadow: inset 0px 5px 10px 0px #16151c, 0px 3px 6px -2px #403f4e;
+  box-shadow: inset 0px 5px 10px 0px #16151c, 0px 3px 6px -2px #403f4e;
+  border: 1px solid #32303e;
+  padding: 6px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.switch-button .switch-outer input[type="checkbox"] {
+  opacity: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+.switch-button .switch-outer .button-toggle {
+  height: 30px;
+  width: 30px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#3b3a4e),
+    to(#272733)
+  );
+  background: -o-linear-gradient(#3b3a4e, #272733);
+  background: linear-gradient(#3b3a4e, #272733);
+  border-radius: 100%;
+  -webkit-box-shadow: inset 0px 5px 4px 0px #424151, 0px 4px 15px 0px #0f0e17;
+  box-shadow: inset 0px 5px 4px 0px #424151, 0px 4px 15px 0px #0f0e17;
+  position: relative;
+  z-index: 2;
+  -webkit-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+  left: 0;
+  bottom: 7px !important;
+}
+
+.switch-button
+  .switch-outer
+  input[type="checkbox"]:checked
+  + .button
+  .button-toggle {
+  left: 58%;
+}
+
+.switch-button
+  .switch-outer
+  input[type="checkbox"]:checked
+  + .button
+  .button-indicator {
+  -webkit-animation: indicator 1s forwards;
+  animation: indicator 1s forwards;
+}
+
+.switch-button .switch-outer .button {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.switch-button .switch-outer .button-indicator {
+  height: 18px;
+  width: 18px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 3px solid #ef565f;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  right: 10px;
+  position: relative;
+}
+
+@-webkit-keyframes indicator {
+  30% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  0% {
+    opacity: 1;
   }
+
+  100% {
+    opacity: 1;
+    border: 3px solid #60d480;
+    left: -68%;
+  }
+}
+
+@keyframes indicator {
+  30% {
+    opacity: 0;
+  }
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    border: 3px solid #60d480;
+    left: -68%;
+  }
+}
+
+.top_heading{
+  color: #ddd;
+  font-size: medium;
+  text-transform: uppercase;
+  font-weight: bold;
 }
