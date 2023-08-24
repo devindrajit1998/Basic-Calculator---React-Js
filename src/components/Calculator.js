@@ -11,7 +11,7 @@ export default function Calculator() {
     }
   };
 
-  // function to fetct data input
+  // function to fetch data input
   const inputData = (event) => {
     if (result === "") {
       setResult("");
@@ -44,12 +44,15 @@ export default function Calculator() {
   // function for delete last number
 
   const deleteLastNumber = () => {
-    if (result === "") {
-      setResult("");
-    } else if (result === 0) {
-      setResult(0);
-    } else {
-      setResult(result.slice(0, -1));
+    if (typeof result === 'string' && result.length > 0) {
+      if (result.length === 1) {
+        setResult('0');
+      } else if (result === '0') {
+        setResult('0');
+
+      } else {
+        setResult(result.slice(0, -1));
+      }
     }
   };
 
@@ -64,10 +67,10 @@ export default function Calculator() {
           </div>
           <div className="right d-flex ">
             <label className="switch-button mb-3" htmlFor="switch">
-              <div className="switch-outer">
-                <input id="switch" type="checkbox" />
+              <div className="switch-outer" >
+                <input id="switch" type="checkbox" onClick={onOff}  />
                 <div className="button">
-                  <span className="button-toggle" onClick={onOff} />
+                  <span className="button-toggle" />
                   <span className="button-indicator" />
                 </div>
               </div>
@@ -75,7 +78,7 @@ export default function Calculator() {
           </div>
         </div>
         <div className="display">
-          <h2 id="result" >{result}</h2>
+          <h2 id="result">{result}</h2>
         </div>
         <div className="buttons">
           <button id="clear" onClick={allClear}>
