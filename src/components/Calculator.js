@@ -29,7 +29,12 @@ export default function Calculator() {
     if (result === "") {
       setResult("");
     } else {
-      setResult(eval(result));
+      const calculatedResult = eval(result).toString(); // Calculate and convert to string
+      if (calculatedResult.length <= 12) {
+        setResult(calculatedResult);
+      } else {
+        setResult("SyntaxError"); // Display an error if the calculated result is too long
+      }
     }
   };
   // function for all clear button
