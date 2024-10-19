@@ -29,11 +29,12 @@ export default function Calculator() {
     if (result === "") {
       setResult("");
     } else {
-      const calculatedResult = eval(result).toString(); // Calculate and convert to string
-      if (calculatedResult.length <= 12) {
-        setResult(calculatedResult);
+      const calculatedResult = eval(result).toString();
+      if (calculatedResult.length > 10) {
+        const newResult = Number(calculatedResult).toFixed(6);
+        setResult(newResult);
       } else {
-        setResult("SyntaxError"); // Display an error if the calculated result is too long
+        setResult(calculatedResult);
       }
     }
   };
@@ -49,12 +50,11 @@ export default function Calculator() {
   // function for delete last number
 
   const deleteLastNumber = () => {
-    if (typeof result === 'string' && result.length > 0) {
+    if (typeof result === "string" && result.length > 0) {
       if (result.length === 1) {
-        setResult('0');
-      } else if (result === '0') {
-        setResult('0');
-
+        setResult("0");
+      } else if (result === "0") {
+        setResult("0");
       } else {
         setResult(result.slice(0, -1));
       }
@@ -72,8 +72,8 @@ export default function Calculator() {
           </div>
           <div className="right d-flex ">
             <label className="switch-button mb-3" htmlFor="switch">
-              <div className="switch-outer" >
-                <input id="switch" type="checkbox" onClick={onOff}  />
+              <div className="switch-outer">
+                <input id="switch" type="checkbox" onClick={onOff} />
                 <div className="button">
                   <span className="button-toggle" />
                   <span className="button-indicator" />
